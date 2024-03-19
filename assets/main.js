@@ -12,11 +12,13 @@ createApp({
   methods: {
     
     getApi(){
-      this.risultato =  ref(null);
+      const result =  ref(null);
       axios.get(this.apiUrl)
-        .then(data => risultato.value = data);
+        .then(data => response.value = data);
       
       this.totalEmails++;
+
+      return result
     }
   },
 }).mount('#app')
