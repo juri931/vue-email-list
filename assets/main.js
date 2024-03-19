@@ -3,17 +3,24 @@ const {createApp} = Vue;
 createApp({
   data() {
     return {
-      risultato: "",
+      risultato: [],
       apiUrl: 'https://flynn.boolean.careers/exercises/api/random/mail',
     };
   },
   
   methods: {
     
-    getRandomMail(){
+    getApi(){
+      this.risultato =  "Caricamento...";
       axios.get(this.apiUrl)
-        .then((data) => this.risultato = data);
-        this.risultato.push(this.data)
+        .then((risposta) => {
+          risultato = this.risposta.data.response;
+        })
+        .catch(()=>{
+          alert("Errore! Impossibile ottenere l'indirizzo email.");
+          this.risultato="";
+        });
+        this.risultato.push(this.data.response)
         console.log(risultato);
     }
   },
